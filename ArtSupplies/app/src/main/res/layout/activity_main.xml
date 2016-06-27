@@ -14,7 +14,22 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/welcomeMain"
-        android:id="@+id/btn_main_welcome"
+        android:id="@+id/txt_main_welcome"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:gravity="top"
+        android:textStyle="bold"
+        android:textSize="@dimen/abc_text_size_large_material" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/imageView"
+        android:layout_below="@id/txt_main_welcome"
+        android:contentDescription="@string/colored_pencils"
+        android:scaleType = "centerCrop"
+        android:src="@drawable/pencils" />
+
+
+
 </RelativeLayout>

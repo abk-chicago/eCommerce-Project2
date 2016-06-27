@@ -2,7 +2,7 @@
     <string name="app_name">Art Supplies</string>
     <!-- Main Activity strings -->
         <string name="welcomeMain">Art Supplies for You</string>
-
+    <string name="colored_pencils">coloredpencils</string>
 
     <!-- List Activity strings -->
 
