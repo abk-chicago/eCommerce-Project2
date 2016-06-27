@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Art Supplies</string>
+    <!-- Main Activity strings -->
+        <string name="welcomeMain">Art Supplies for You</string>
+
+
+    <!-- List Activity strings -->
+
+
+
+    <!-- Item Listing strings -->
+
+
+
+
+
+    <!-- format: <string name="name">text</string>   -->
+
+</resources>
