@@ -31,10 +31,10 @@ public class MainActivity extends AppCompatActivity {
         mClickBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mProductIntent = new Intent(MainActivity.this, Products.class);
+                mProductIntent = new Intent(MainActivity.this, ProductsActivity.class);
                 startActivity(mProductIntent);
             }
-                                     });
+         });
     }
 }
 
