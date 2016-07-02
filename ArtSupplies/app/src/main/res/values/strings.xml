@@ -2,8 +2,9 @@
     <string name="app_name">Art Supplies</string>
     <!-- Main Activity strings -->
     <string name="welcomeMain">Art Supplies for You</string>
-    <string name="colored_pencils">coloredpencils</string>
+    <string name="coloredPencils">colored pencils</string>
     <string name="btnClickMain">Click to Browse Our Products</string>
+    <string name="searchHint">Search</string>
 
     <!-- Product List Activity strings -->
     <string name="listOfProducts">Products We Carry</string>
