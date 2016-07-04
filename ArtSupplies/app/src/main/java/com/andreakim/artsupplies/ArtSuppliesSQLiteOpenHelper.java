@@ -72,36 +72,6 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
     }
 
 
-
-
-//
-//    public Products getProductById(int id) {
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//
-//        String[] projection = new String[] { "id" , "name", "manufacturer", "style" , "price"};
-//        String selection = " id = ?";
-//        String[] SelectionArgs = new String[] {Integer.toString(id)};
-//
-//
-//        Cursor cursor = db.query("products", projection, selection, SelectionArgs, null, null, null, null);
-//
-//        int productId = Integer.parseInt(cursor.getString(cursor.getColumnIndex("id")));
-//        double productPrice = Double.parseDouble(cursor.getString(cursor.getColumnIndex("price")));
-//        String productName = cursor.getString(cursor.getColumnIndex("name"));
-//        String productManufacturer = cursor.getString(cursor.getColumnIndex("manufacturer"));
-//        String productStyle = cursor.getString(cursor.getColumnIndex("style"));
-//
-//        Products products = new Products();
-//        cursor.close();
-//        return products;
-//
-//    };
-
-
-
-
-
     public Cursor getProducts(){
 
         SQLiteDatabase db = this.getReadableDatabase();

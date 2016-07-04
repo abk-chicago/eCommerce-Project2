@@ -9,8 +9,12 @@
     <!-- Product List Activity strings -->
     <string name="listOfProducts">Products We Carry</string>
 
+
+
     <!-- Item Listing strings -->
 
+    <!-- Shopping Cart strings -->
+<string name="txtView_shopping_cart">Shopping Cart</string>
 
     <!-- format: <string name="name">text</string>   -->
 
