@@ -42,6 +42,8 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
                     MFG + " TEXT, " +
                     PRICE + " TEXT )";
 
+    private static final String DROP_PRODUCTS_TABLE = "DROP PRODUCTS_TABLE IF EXISTS PRODUCTS";
+
     public ArtSuppliesSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -54,19 +56,19 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + PRODUCTS_TABLE_NAME);
+        db.execSQL(DROP_PRODUCTS_TABLE);
         this.onCreate(db);
     }
 
-    public long addItem(String name, String style, String mfg, String price){
-        ContentValues values = new ContentValues();
-        values.put(NAME, name);
-        values.put(STYLE, style);
-        values.put(MFG, mfg);
-        values.put(PRICE, price);
-
+    public long addProduct(String name, String style, String mfg, String price){
         SQLiteDatabase db = this.getWritableDatabase();
-        long returnId = db.insert(PRODUCTS_TABLE_NAME, null, values);
+        ContentValues product = new ContentValues();
+        product.put(NAME, name);
+        product.put(STYLE, style);
+        product.put(MFG, mfg);
+        product.put(PRICE, price);
+
+        long returnId = db.insert(PRODUCTS_TABLE_NAME, null, product);
         db.close();
         return returnId;
     }

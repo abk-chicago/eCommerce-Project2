@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (savedInstanceState !=null) {
-            Log.i("ONCREATE","savedInstanceState is NOT NULL");
-        } else Log.i("ONCREATE","savedInstanceState is NULL");
+            Log.i("OnCreate","savedInstanceState is NOT NULL");
+        } else Log.i("OnCreate","savedInstanceState is NULL");
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
 
