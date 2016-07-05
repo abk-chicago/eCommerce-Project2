@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -25,11 +26,18 @@ public class MainActivity extends AppCompatActivity {
 
     Button mClickBtn;
 
+    @Override
+    protected void onSaveInstanceState(Bundle state) {
+        Log.i("TEST","ROTATING");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if (savedInstanceState !=null) {
+            Log.i("ONCREATE","savedInstanceState is NOT NULL");
+        } else Log.i("ONCREATE","savedInstanceState is NULL");
 
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
 
