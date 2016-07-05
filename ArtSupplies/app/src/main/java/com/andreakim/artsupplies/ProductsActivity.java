@@ -4,6 +4,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -59,9 +60,8 @@ public class ProductsActivity extends AppCompatActivity {
         db.addProduct("sumi-e watercolor sets", "set of 6", "Yasutomo", "19.99");
         db.addProduct("drawing pads", "9 x 12", "Canson Edition", "16.50");
 
-
-        //Cursor cursor = db.query("PRODUCTS",null,null,null,null,null,null,null);   <-- this little thing is holding me up
-        mProductsView = (ListView) findViewById(R.id.listViewProducts);
+//        Cursor c = db.query("PRODUCTS",null,null,null,null,null,null,null);   // <--I just can't get this to work
+//        mProductsView = (ListView) findViewById(R.id.listViewProducts);
 
         mHelper = new ArtSuppliesSQLiteOpenHelper(ProductsActivity.this);
         mCursor = mHelper.getProducts();
@@ -135,7 +135,7 @@ public class ProductsActivity extends AppCompatActivity {
         client.connect();
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
-                "Products Page", // TODO: Define a title for the content shown.
+                "ProductItem Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
                 // make sure this auto-generated web page URL is correct.
                 // Otherwise, set the URL to null.
@@ -154,7 +154,7 @@ public class ProductsActivity extends AppCompatActivity {
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
                 Action.TYPE_VIEW, // TODO: choose an action type.
-                "Products Page", // TODO: Define a title for the content shown.
+                "ProductItem Page", // TODO: Define a title for the content shown.
                 // TODO: If you have web page content that matches this app activity's content,
                 // make sure this auto-generated web page URL is correct.
                 // Otherwise, set the URL to null.

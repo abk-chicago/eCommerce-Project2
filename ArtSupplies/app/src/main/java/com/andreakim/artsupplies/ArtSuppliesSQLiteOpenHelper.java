@@ -5,17 +5,10 @@ package com.andreakim.artsupplies;
  */
 import android.content.ContentValues;
         import android.content.Context;
-        import android.content.res.Resources;
-        import android.database.Cursor;
+import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
         import android.database.sqlite.SQLiteOpenHelper;
-        import android.text.TextUtils;
-        import android.util.Log;
 
-        import java.io.BufferedReader;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
@@ -122,7 +115,7 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
         return products;
     }
 
-    public Products getProductById(int id) {
+    public ProductItem getProductById(int id) {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -131,7 +124,7 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
         String[] SelectionArgs = new String[] {Integer.toString(id)};
 
 
-        Cursor cursor = db.query("products", projection, selection, SelectionArgs, null, null, null, null);
+        Cursor cursor = db.query("PRODUCTS", projection, selection, SelectionArgs, null, null, null, null);
 
         String productId = cursor.getString(cursor.getColumnIndex("id"));
         String productPrice = cursor.getString(cursor.getColumnIndex("price"));
@@ -139,7 +132,7 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
         String productManufacturer = cursor.getString(cursor.getColumnIndex("mfg"));
         String productStyle = cursor.getString(cursor.getColumnIndex("style"));
 
-        Products products = new Products();
+        ProductItem products = new ProductItem();
         cursor.close();
         return products;
 
