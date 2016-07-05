@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +34,10 @@ public class ProductsActivity extends AppCompatActivity {
     private ArtSuppliesSQLiteOpenHelper mHelper;
     public String mProducts;
     AdapterView.OnItemClickListener mClickListener;
+
+
+    Button btnMain = (Button) findViewById(R.id.btn_toMain);
+    Button btnCart = (Button) findViewById(R.id.btn_toCart);
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -61,7 +66,7 @@ public class ProductsActivity extends AppCompatActivity {
         db.addProduct("drawing pads", "9 x 12", "Canson Edition", "16.50");
 
 //        Cursor c = db.query("PRODUCTS",null,null,null,null,null,null,null);   // <--I just can't get this to work
-//        mProductsView = (ListView) findViewById(R.id.listViewProducts);
+        mProductsView = (ListView) findViewById(R.id.listViewProducts);
 
         mHelper = new ArtSuppliesSQLiteOpenHelper(ProductsActivity.this);
         mCursor = mHelper.getProducts();
@@ -106,7 +111,23 @@ public class ProductsActivity extends AppCompatActivity {
     };
 
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        btnMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainIntent = new Intent(ProductsActivity.this, MainActivity.class);
+                startActivity(mMainIntent);
+                Button btn = (Button) findViewById(R.id.btn_toMain);
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mShoppingCartIntent = new Intent(ProductsActivity.this, ShoppingCartActivity.class);
+                        startActivity(mShoppingCartIntent);
+
+
+
+
+                        // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }

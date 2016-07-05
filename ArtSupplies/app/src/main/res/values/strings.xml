@@ -9,10 +9,12 @@
     <!-- Product List Activity strings -->
     <string name="listOfProducts">Products We Carry</string>
     <string name="clickInstructions">Click on any item to view details.</string>
-
-
+    <string name="btn_toMain">Back to Main</string>
+    <string name="btn_toCart">View Cart</string>
 
     <!-- Item Listing strings -->
+
+
 
     <!-- Shopping Cart strings -->
 <string name="txtView_shopping_cart">Shopping Cart</string>

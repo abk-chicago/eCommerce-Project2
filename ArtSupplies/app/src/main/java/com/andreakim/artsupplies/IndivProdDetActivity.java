@@ -7,6 +7,45 @@ import android.widget.TextView;
 
 public class IndivProdDetActivity extends AppCompatActivity {
 
+    public TextView getmTxtName() {
+        return mTxtName;
+    }
+
+    public void setmTxtName(TextView mTxtName) {
+        this.mTxtName = mTxtName;
+    }
+
+    public TextView getmTxtStyle() {
+        return mTxtStyle;
+    }
+
+    public void setmTxtStyle(TextView mTxtStyle) {
+        this.mTxtStyle = mTxtStyle;
+    }
+
+    public TextView getmTextMfg() {
+        return mTextMfg;
+    }
+
+    public void setmTextMfg(TextView mTextMfg) {
+        this.mTextMfg = mTextMfg;
+    }
+
+    public TextView getmTextPrice() {
+        return mTextPrice;
+    }
+
+    public void setmTextPrice(TextView mTextPrice) {
+        this.mTextPrice = mTextPrice;
+    }
+
+    public IndivProdDetActivity(TextView mTxtName, TextView mTxtStyle, TextView mTextMfg, TextView mTextPrice) {
+        this.mTxtName = mTxtName;
+        this.mTxtStyle = mTxtStyle;
+        this.mTextMfg = mTextMfg;
+
+        this.mTextPrice = mTextPrice;
+    }
 
     TextView mTxtName;
     TextView mTxtStyle;

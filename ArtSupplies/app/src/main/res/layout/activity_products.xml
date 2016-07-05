@@ -21,7 +21,7 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="320dp"
         android:id="@+id/listViewProducts"
         android:layout_below="@+id/tv_prods"
         android:paddingBottom="24dp"/>
@@ -33,9 +33,26 @@
         android:text="@string/clickInstructions"
         android:id="@+id/clickProd"
         android:paddingTop="12dp"
-        android:layout_alignRight="@+id/listViewProducts"
-        android:layout_alignEnd="@+id/listViewProducts"
-        android:layout_alignBottom="@+id/listViewProducts"
+        android:layout_below="@+id/listViewProducts"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_toMain"
+        android:id="@+id/btn_toMain"
+        android:padding="6dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_toCart"
+        android:id="@+id/btn_toCart"
+        android:padding="6dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
