@@ -105,7 +105,7 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
 
         return cursor;
     }
-
+//in case I need it...
     public ArrayList<String> showProductsAll() {
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -128,7 +128,7 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String[] projection = new String[] { "ID" , "NAME", "MFG", "STYLE" , "PRICE"};
+        String[] projection = new String[] { "ID" , "NAME", "STYLE", "MFG" , "PRICE"};
         String selection = " id = ?";
         String[] SelectionArgs = new String[] {Integer.toString(id)};
 
@@ -139,7 +139,7 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
         String productPrice = cursor.getString(cursor.getColumnIndex("price"));
         String productName = cursor.getString(cursor.getColumnIndex("name"));
         String productManufacturer = cursor.getString(cursor.getColumnIndex("mfg"));
-        String productDetail = cursor.getString(cursor.getColumnIndex("style"));
+        String productStyle = cursor.getString(cursor.getColumnIndex("style"));
 
         Products products = new Products();
         cursor.close();
