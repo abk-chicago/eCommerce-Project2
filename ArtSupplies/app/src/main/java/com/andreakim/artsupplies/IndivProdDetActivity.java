@@ -29,6 +29,10 @@ public class IndivProdDetActivity extends AppCompatActivity {
         String mfg = listIntent.getStringExtra("MFG");
         String price = listIntent.getStringExtra("PRICE");
 
+        mTxtName.setText(name);
+        mTxtStyle.setText(style);
+        mTextMfg.setText(mfg);
+        mTextPrice.setText(price);
 
     }
 }

@@ -46,7 +46,7 @@ public class ProductsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products);
         handleIntent(getIntent());
 
-        //creating the PRODUCTS table of the ARTSUPPLIES database (1 of 3 tables to be created)
+        //creating the PRODUCTS table of the ART_SUPPLIES database (1 of 3 tables to be created)
         ArtSuppliesSQLiteOpenHelper db = new ArtSuppliesSQLiteOpenHelper(this);
         db.addProduct("paint brushes", "pointed sable round set of 3", "Blick", "4.00");
         db.addProduct("watercolor paint", "set of 18", "Camellia", "5.50");
@@ -60,12 +60,11 @@ public class ProductsActivity extends AppCompatActivity {
         db.addProduct("drawing pads", "9 x 12", "Canson Edition", "16.50");
 
 
+        //Cursor cursor = db.query("PRODUCTS",null,null,null,null,null,null,null);   <-- this little thing is holding me up
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
+
         mHelper = new ArtSuppliesSQLiteOpenHelper(ProductsActivity.this);
-        //mCursor = mHelper.getProducts();
-
-
-
+        mCursor = mHelper.getProducts();
 
 
         CursorAdapter mCursorAdapter = new CursorAdapter(ProductsActivity.this,mCursor,0) {
@@ -81,9 +80,10 @@ public class ProductsActivity extends AppCompatActivity {
                 txt.setText(rowData);
             }
         };
+        //should sending the db info to the ListView
         mProductsView.setAdapter(mCursorAdapter);
 
-        //sends the user to detail page
+        //sends the user to detail page when clicked
         mProductsView.setOnItemClickListener(mClickListener);
 
         mClickListener = new AdapterView.OnItemClickListener() {
