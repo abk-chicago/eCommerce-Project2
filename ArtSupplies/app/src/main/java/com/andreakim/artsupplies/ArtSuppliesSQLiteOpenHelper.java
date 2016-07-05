@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
         import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -17,15 +18,32 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "ART_SUPPLIES_DB";
     public static final String PRODUCTS_TABLE_NAME = "PRODUCTS";
+    public static final String CUSTOMER_TABLE_NAME = "CUSTOMERS";
+    public static final String ORDER_DETAIL_TABLE_NAME = "ORDERS";
 
+// for PRODUCTS TABLE
     public static final String ID = "_id";
     public static final String NAME = "NAME";
     public static final String STYLE = "STYLE";
     public static final String MFG = "MFG";
     public static final String PRICE = "PRICE";
 
-    public static final String[] PRODUCTS_COLUMNS = {ID,NAME,STYLE,MFG,PRICE};
+// for ORDER_DETAIL AND CUSTOMER TABLES
+    public static final String STATE = "STATE";
+    public static final String ITEMS_ORDERED = "ITEMS ORDERED";
+    public static final String ORDER_NO = "ORDER NUMBER";
+    public static final String QUANTITY = "QUANTITY";
+    public static final String PRETAX_TOTAL = "PRETAX TOTAL";
 
+
+
+//setting up colums for the 3 tables in DB
+    public static final String[] PRODUCTS_COLUMNS = {ID,NAME,STYLE,MFG,PRICE};
+    public static final String[] CUSTOMER_COLUMNS = {ID,NAME,STATE,ITEMS_ORDERED};
+    public static final String[] ORDER_DETAIL_COLUMNS = {ID,ORDER_NO,QUANTITY,PRETAX_TOTAL};
+
+
+    //setting up tables
     private static final String CREATE_PRODUCTS_TABLE =
             "CREATE TABLE " + PRODUCTS_TABLE_NAME +
                     "(" +
@@ -35,11 +53,31 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
                     MFG + " TEXT, " +
                     PRICE + " TEXT )";
 
+    private static final String CREATE_CUSTOMER_TABLE =
+            "CREATE TABLE " + CUSTOMER_TABLE_NAME +
+                    "(" +
+                    ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    NAME + " TEXT, " +
+                    STATE + " TEXT, " +
+                    ITEMS_ORDERED + " TEXT )";
+
+    private static final String CREATE_ORDER_DETAIL_TABLE =
+            "CREATE TABLE " + ORDER_DETAIL_TABLE_NAME +
+                    "(" +
+                    ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    ORDER_NO + " TEXT, " +
+                    QUANTITY + " TEXT, " +
+                    PRETAX_TOTAL + " TEXT )";
+
+//setting up Drop Table SQL command strings for the 3 tables
     private static final String DROP_PRODUCTS_TABLE = "DROP PRODUCTS_TABLE IF EXISTS PRODUCTS";
+    private static final String DROP_CUSTOMER_TABLE = "DROP CUSTOMER_TABLE IF EXISTS CUSTOMER";
+    private static final String DROP_ORDER_DETAIL_TABLE = "DROP ORDER_DETAIL_TABLE IF EXISTS ORDER_DETAIL";
 
     public ArtSuppliesSQLiteOpenHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -73,13 +111,7 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
 
         Cursor cursor = db.query(PRODUCTS_TABLE_NAME, // a. table
                 PRODUCTS_COLUMNS, // b. column names
-                NAME + " AND " + STYLE, // c. selections
-                null, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
-
+                NAME + " AND " + STYLE, null,null,null,null,null);
         return cursor;
     }
 
@@ -91,13 +123,34 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
                 PRODUCTS_COLUMNS, // b. column names
                 NAME + " LIKE ?" + " OR " + STYLE + " LIKE ?", // c. selections
                 new String[]{"found: " + "%" + query + "%"}, // d. selections args
-                null, // e. group by
-                null, // f. having
-                null, // g. order by
-                null); // h. limit
-
+                null,null,null,null);
         return cursor;
     }
+
+
+
+public void addProduct() {
+    ArtSuppliesSQLiteOpenHelper db =  new ArtSuppliesSQLiteOpenHelper();
+
+    //creating the PRODUCTS table of the ART_SUPPLIES database (1 of 3 tables to be created)
+
+    db.addProduct("paint brushes", "pointed sable round set of 3", "Blick", "4.00");
+    db.addProduct("watercolor paint", "set of 18", "Camellia", "5.50");
+    db.addProduct("x-act knife", "#1 knife", "X-acto", "3.65");
+    db.addProduct("art boards", "16 x 20", "Canson", "5.99");
+    db.addProduct("sculpey", "1.75 lb", "Sculpey", "10.99");
+    db.addProduct("mixed media gift set", "watercolor pencils and pitt artists pens, set of 14", "Albrecht Dürer", "28.99");
+    db.addProduct("lino cutter set", "handle and 6 blades", "Blick", "8.00");
+    db.addProduct("quartet char-kole squares", "box of 3", "Alphacolor", "2.50");
+    db.addProduct("sumi-e watercolor sets", "set of 6", "Yasutomo", "19.99");
+    db.addProduct("drawing pads", "9 x 12", "Canson Edition", "16.50");
+
+  //  Cursor c = db.query("PRODUCTS", null, null, null, null, null, null, null);   // <--I just can't get this to work
+
+}
+
+
+
 //in case I need it...
     public ArrayList<String> showProductsAll() {
 
