@@ -8,6 +8,7 @@
 
     <!-- Product List Activity strings -->
     <string name="listOfProducts">Products We Carry</string>
+    <string name="clickInstructions">Click on any item to view details.</string>
 
 
 

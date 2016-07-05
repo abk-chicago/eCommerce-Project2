@@ -122,8 +122,6 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
         return products;
     }
 
-
-
     public Products getProductById(int id) {
 
         SQLiteDatabase db = this.getReadableDatabase();

@@ -10,9 +10,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -24,11 +24,15 @@ import org.w3c.dom.Text;
 public class ProductsActivity extends AppCompatActivity {
 
     Intent mMainIntent;
+    Intent mDetailIntent;
     Intent mShoppingCartIntent;
-    private ListView mProductsView;
+    ListView mProductsView;
+    Cursor mCursor;
     private CursorAdapter mCursorAdapter;
     private ArtSuppliesSQLiteOpenHelper mHelper;
     public String mProducts;
+    AdapterView.OnItemClickListener mClickListener;
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -58,10 +62,13 @@ public class ProductsActivity extends AppCompatActivity {
 
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
         mHelper = new ArtSuppliesSQLiteOpenHelper(ProductsActivity.this);
+        //mCursor = mHelper.getProducts();
 
-        Cursor cursor = mHelper.getProducts();
 
-        CursorAdapter mCursorAdapter = new CursorAdapter(ProductsActivity.this,cursor,0) {
+
+
+
+        CursorAdapter mCursorAdapter = new CursorAdapter(ProductsActivity.this,mCursor,0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
                 return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1,parent,false);
@@ -74,6 +81,19 @@ public class ProductsActivity extends AppCompatActivity {
                 txt.setText(rowData);
             }
         };
+        mProductsView.setAdapter(mCursorAdapter);
+
+        //sends the user to detail page
+        mProductsView.setOnItemClickListener(mClickListener);
+
+        mClickListener = new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            mDetailIntent = new Intent(ProductsActivity.this,IndivProdDetActivity.class);
+            startActivity(mDetailIntent);
+        }
+    };
+
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.

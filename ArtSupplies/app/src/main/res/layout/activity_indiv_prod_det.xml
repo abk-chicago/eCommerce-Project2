@@ -9,4 +9,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.andreakim.artsupplies.IndivProdDetActivity">
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Name"
+        android:id="@+id/textV_name" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Style"
+        android:layout_below="@id/textV_name"
+        android:id="@+id/textV_style" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Manufacturer"
+        android:layout_below="@id/textV_style"
+        android:id="@+id/textV_mfg" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Price"
+        android:layout_below="@id/textV_mfg"
+        android:id="@+id/textV_price" />
 </RelativeLayout>
