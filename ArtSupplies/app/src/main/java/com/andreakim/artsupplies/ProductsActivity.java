@@ -90,6 +90,7 @@ public class ProductsActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             mDetailIntent = new Intent(ProductsActivity.this,IndivProdDetActivity.class);
+            mDetailIntent.putExtra("NAME","temp dummy info");
             startActivity(mDetailIntent);
         }
     };
