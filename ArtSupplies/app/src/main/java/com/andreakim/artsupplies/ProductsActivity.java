@@ -90,7 +90,17 @@ public class ProductsActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             mDetailIntent = new Intent(ProductsActivity.this,IndivProdDetActivity.class);
-            mDetailIntent.putExtra("NAME","temp dummy info");
+
+            String name = mCursor.getString(mCursor.getColumnIndex("NAME"));
+            String style = mCursor.getString(mCursor.getColumnIndex("STYLE"));
+            String mfg = mCursor.getString(mCursor.getColumnIndex("MFG"));
+            String price = mCursor.getString(mCursor.getColumnIndex("PRICE"));
+            mDetailIntent.putExtra("NAME",name);
+            mDetailIntent.putExtra("STYLE",style);
+            mDetailIntent.putExtra("MFG",mfg);
+            mDetailIntent.putExtra("PRICE",price);
+
+
             startActivity(mDetailIntent);
         }
     };

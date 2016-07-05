@@ -29,6 +29,7 @@ public class IndivProdDetActivity extends AppCompatActivity {
         String mfg = listIntent.getStringExtra("MFG");
         String price = listIntent.getStringExtra("PRICE");
 
+
     }
 }
 
