@@ -36,8 +36,7 @@ public class ProductsActivity extends AppCompatActivity {
     AdapterView.OnItemClickListener mClickListener;
 
 
-    Button btnMain = (Button) findViewById(R.id.btn_toMain);
-    Button btnCart = (Button) findViewById(R.id.btn_toCart);
+
 
 
     @Override
@@ -47,7 +46,30 @@ public class ProductsActivity extends AppCompatActivity {
         //   handleIntent(getIntent());
 
 
- //moved SQL db insert from here
+
+
+
+
+        Button btnMain = (Button) findViewById(R.id.btn_toMain);
+        Button btnCart = (Button) findViewById(R.id.btn_toCart);
+
+        btnMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainIntent = new Intent(ProductsActivity.this, MainActivity.class);
+                startActivity(mMainIntent);
+                Button btn = (Button) findViewById(R.id.btn_toMain);
+            }
+        });
+
+        btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mShoppingCartIntent = new Intent(ProductsActivity.this, ShoppingCartActivity.class);
+                startActivity(mShoppingCartIntent);
+            }
+        });
+
 
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
 
@@ -75,43 +97,24 @@ public class ProductsActivity extends AppCompatActivity {
         mProductsView.setOnItemClickListener(mClickListener);
 
         mClickListener = new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            mDetailIntent = new Intent(ProductsActivity.this,IndivProdDetActivity.class);
-
-            String name = mCursor.getString(mCursor.getColumnIndex("NAME"));
-            String style = mCursor.getString(mCursor.getColumnIndex("STYLE"));
-            String mfg = mCursor.getString(mCursor.getColumnIndex("MFG"));
-            String price = mCursor.getString(mCursor.getColumnIndex("PRICE"));
-            mDetailIntent.putExtra("NAME",name);
-            mDetailIntent.putExtra("STYLE",style);
-            mDetailIntent.putExtra("MFG",mfg);
-            mDetailIntent.putExtra("PRICE",price);
-
-
-            startActivity(mDetailIntent);
-        }
-    };
-
-
-        btnMain.setOnClickListener(new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View v) {
-                                           mMainIntent = new Intent(ProductsActivity.this, MainActivity.class);
-                                           startActivity(mMainIntent);
-                                           Button btn = (Button) findViewById(R.id.btn_toMain);
-                                       }
-                                   });
-
-        btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                mShoppingCartIntent = new Intent(ProductsActivity.this, ShoppingCartActivity.class);
-                startActivity(mShoppingCartIntent);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mDetailIntent = new Intent(ProductsActivity.this, IndivProdDetActivity.class);
+
+                String name = mCursor.getString(mCursor.getColumnIndex("NAME"));
+                String style = mCursor.getString(mCursor.getColumnIndex("STYLE"));
+                String mfg = mCursor.getString(mCursor.getColumnIndex("MFG"));
+                String price = mCursor.getString(mCursor.getColumnIndex("PRICE"));
+                mDetailIntent.putExtra("NAME", name);
+                mDetailIntent.putExtra("STYLE", style);
+                mDetailIntent.putExtra("MFG", mfg);
+                mDetailIntent.putExtra("PRICE", price);
 
 
+                startActivity(mDetailIntent);
             }
-        });
+        };
+
     }
 
             private void handleIntent(Intent intent) {
