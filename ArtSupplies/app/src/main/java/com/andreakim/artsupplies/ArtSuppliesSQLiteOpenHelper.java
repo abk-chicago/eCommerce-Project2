@@ -83,7 +83,23 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PRODUCTS_TABLE);
 
+
+
+
+        db.execSQL("INSERT INTO PRODUCTS VALUES (paint brushes,pointed sable round set of 3,Blick,4.00)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (x-acto knife,#1 knife,X-acto,3.65)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (art boards,16 x 20,Canson,5.99)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (sculpey,1.75 lb,Sculpey,10.99)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (mixed media gift set,watercolor pencils and pitt artists pens, set of 14,Albrecht Dürer,28.99)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (lino cutter set,handle and 6 blades,Blick,8.00)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (quartet char-kole squares,box of 3,Alphacolor,2.50)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (sumi-e watercolor sets,set of 6,Yasutomo,19.99)");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (drawing pads,9 x 12,Canson Edition,16.50)");
+
     }
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -127,27 +143,9 @@ public class ArtSuppliesSQLiteOpenHelper extends SQLiteOpenHelper{
         return cursor;
     }
 
+    SQLiteDatabase db = getWritableDatabase();
 
-
-public void addProduct() {
-    ArtSuppliesSQLiteOpenHelper db =  new ArtSuppliesSQLiteOpenHelper();
-
-    //creating the PRODUCTS table of the ART_SUPPLIES database (1 of 3 tables to be created)
-
-    db.addProduct("paint brushes", "pointed sable round set of 3", "Blick", "4.00");
-    db.addProduct("watercolor paint", "set of 18", "Camellia", "5.50");
-    db.addProduct("x-act knife", "#1 knife", "X-acto", "3.65");
-    db.addProduct("art boards", "16 x 20", "Canson", "5.99");
-    db.addProduct("sculpey", "1.75 lb", "Sculpey", "10.99");
-    db.addProduct("mixed media gift set", "watercolor pencils and pitt artists pens, set of 14", "Albrecht Dürer", "28.99");
-    db.addProduct("lino cutter set", "handle and 6 blades", "Blick", "8.00");
-    db.addProduct("quartet char-kole squares", "box of 3", "Alphacolor", "2.50");
-    db.addProduct("sumi-e watercolor sets", "set of 6", "Yasutomo", "19.99");
-    db.addProduct("drawing pads", "9 x 12", "Canson Edition", "16.50");
-
-  //  Cursor c = db.query("PRODUCTS", null, null, null, null, null, null, null);   // <--I just can't get this to work
-
-}
+    Cursor c = db.query("PRODUCTS", null, null, null, null, null, null, null);
 
 
 
