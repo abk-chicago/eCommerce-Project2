@@ -6,5 +6,17 @@ package com.andreakim.artsupplies;
 public class ProductItem {
 
 
+    String mPaintbrush;
 
+    public String getPaintbrush() {
+        return mPaintbrush;
+    }
+
+    public void setPaintbrush(String paintbrush) {
+        mPaintbrush = paintbrush;
+    }
+
+    public ProductItem() {
+
+    }
 }
