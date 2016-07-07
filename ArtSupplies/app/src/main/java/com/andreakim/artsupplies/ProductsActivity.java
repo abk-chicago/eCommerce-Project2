@@ -36,7 +36,8 @@ public class ProductsActivity extends AppCompatActivity {
     AdapterView.OnItemClickListener mClickListener;
 
 
-
+    Button btnCart;
+    Button btnMain;
 
 
     @Override
@@ -47,18 +48,16 @@ public class ProductsActivity extends AppCompatActivity {
 
 
 
-
-
-
-        Button btnMain = (Button) findViewById(R.id.btn_toMain);
         Button btnCart = (Button) findViewById(R.id.btn_toCart);
+        Button btnMain= (Button) findViewById(R.id.btn_toMain);
+
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mMainIntent = new Intent(ProductsActivity.this, MainActivity.class);
                 startActivity(mMainIntent);
-                Button btn = (Button) findViewById(R.id.btn_toMain);
+
             }
         });
 
@@ -67,15 +66,14 @@ public class ProductsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mShoppingCartIntent = new Intent(ProductsActivity.this, ShoppingCartActivity.class);
                 startActivity(mShoppingCartIntent);
+
             }
         });
 
 
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
-
         mHelper = new ArtSuppliesSQLiteOpenHelper(ProductsActivity.this);
         mCursor = mHelper.getProducts();
-
 
         CursorAdapter mCursorAdapter = new CursorAdapter(ProductsActivity.this,mCursor,0) {
             @Override

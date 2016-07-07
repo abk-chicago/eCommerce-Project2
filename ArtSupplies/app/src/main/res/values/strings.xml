@@ -17,7 +17,12 @@
 
 
     <!-- Shopping Cart strings -->
-<string name="txtView_shopping_cart">Shopping Cart</string>
+    <string name="txtView_shopping_cart">Shopping Cart</string>
+    <string name="clear">Clear cart</string>
+    <string name="delete">Delete item</string>
+    <string name="checkout">I\'m ready to check out</string>
+    <string name="update">Update Cart</string>
+
 
     <!-- format: <string name="name">text</string>   -->
 
