@@ -25,56 +25,53 @@ import org.w3c.dom.Text;
 
 public class ProductsActivity extends AppCompatActivity {
 
+    //declaring member variables, intents, cursor, buttons
     Intent mMainIntent;
     Intent mDetailIntent;
     Intent mShoppingCartIntent;
     ListView mProductsView;
     Cursor mCursor;
+    Button btnCart;
+    Button btnMain;
+
     private CursorAdapter mCursorAdapter;
     private ArtSuppliesSQLiteOpenHelper mHelper;
     public String mProducts;
     AdapterView.OnItemClickListener mClickListener;
 
-
-    Button btnCart;
-    Button btnMain;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
-        //   handleIntent(getIntent());
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_products);
 
+//attach buttons
+        btnCart = (Button) findViewById(R.id.btn_toCart);
+        btnMain= (Button) findViewById(R.id.btn_toMain);
 
-
-        Button btnCart = (Button) findViewById(R.id.btn_toCart);
-        Button btnMain= (Button) findViewById(R.id.btn_toMain);
-
-
+//onClickListener for mMainIntent
         btnMain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMainIntent = new Intent(ProductsActivity.this, MainActivity.class);
-                startActivity(mMainIntent);
-
-            }
+        @Override
+        public void onClick(View v) {
+            mMainIntent = new Intent(ProductsActivity.this, MainActivity.class);
+            startActivity(mMainIntent);
+        }
         });
 
+//onClickListener for ShoppingCartIntent
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mShoppingCartIntent = new Intent(ProductsActivity.this, ShoppingCartActivity.class);
                 startActivity(mShoppingCartIntent);
-
             }
         });
-
 
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
         mHelper = new ArtSuppliesSQLiteOpenHelper(ProductsActivity.this);
         mCursor = mHelper.getProducts();
+        handleIntent(getIntent());
 
+// to put db items in ListView rows
         CursorAdapter mCursorAdapter = new CursorAdapter(ProductsActivity.this,mCursor,0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -88,7 +85,8 @@ public class ProductsActivity extends AppCompatActivity {
                 txt.setText(rowData);
             }
         };
-        //should sending the db info to the ListView
+
+        //should sending the db / attach cursor to the ListView
         mProductsView.setAdapter(mCursorAdapter);
 
         //sends the user to detail page when clicked
@@ -97,47 +95,42 @@ public class ProductsActivity extends AppCompatActivity {
         mClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mDetailIntent = new Intent(ProductsActivity.this, IndivProdDetActivity.class);
+            mDetailIntent = new Intent(ProductsActivity.this, IndivProdDetActivity.class);
 
-                String name = mCursor.getString(mCursor.getColumnIndex("NAME"));
-                String style = mCursor.getString(mCursor.getColumnIndex("STYLE"));
-                String mfg = mCursor.getString(mCursor.getColumnIndex("MFG"));
-                String price = mCursor.getString(mCursor.getColumnIndex("PRICE"));
-                mDetailIntent.putExtra("NAME", name);
-                mDetailIntent.putExtra("STYLE", style);
-                mDetailIntent.putExtra("MFG", mfg);
-                mDetailIntent.putExtra("PRICE", price);
-
-
-                startActivity(mDetailIntent);
+            String name = mCursor.getString(mCursor.getColumnIndex("NAME"));
+            String style = mCursor.getString(mCursor.getColumnIndex("STYLE"));
+            String mfg = mCursor.getString(mCursor.getColumnIndex("MFG"));
+            String price = mCursor.getString(mCursor.getColumnIndex("PRICE"));
+            mDetailIntent.putExtra("NAME", name);
+            mDetailIntent.putExtra("STYLE", style);
+            mDetailIntent.putExtra("MFG", mfg);
+            mDetailIntent.putExtra("PRICE", price);
+            startActivity(mDetailIntent);
             }
         };
-
     }
 
-            private void handleIntent(Intent intent) {
-                if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-                    String query = intent.getStringExtra(SearchManager.QUERY);
-                    Cursor cursor = mHelper.searchArtSupplies(query);
-                    mCursorAdapter.changeCursor(cursor);
-                    mCursorAdapter.notifyDataSetChanged();
-                }
-            }
+    private void handleIntent(Intent intent) {
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            Cursor cursor = mHelper.searchArtSupplies(query);
+            mCursorAdapter.changeCursor(cursor);
+            mCursorAdapter.notifyDataSetChanged();
+        }
+    }
 
     @Override
     public void onNewIntent(Intent intent) {
         handleIntent(getIntent());
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
-            @Override
-            public void onStart() {
-                super.onStart();
-            }
-
-            @Override
-            public void onStop() {
+    @Override
+    public void onStop() {
                 super.onStop();
             }
-
     }

@@ -16,10 +16,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-
-
         Button btnMain= (Button) findViewById(R.id.cart_btn_bk_main);
-
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,7 +26,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 }
