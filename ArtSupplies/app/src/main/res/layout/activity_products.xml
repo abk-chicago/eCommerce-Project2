@@ -21,7 +21,7 @@
 
     <ListView
         android:layout_width="wrap_content"
-        android:layout_height="320dp"
+        android:layout_height="370dp"
         android:id="@+id/listViewProducts"
         android:layout_below="@+id/tv_prods"
         android:paddingBottom="24dp"/>
