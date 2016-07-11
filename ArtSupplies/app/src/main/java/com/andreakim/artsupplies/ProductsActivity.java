@@ -1,5 +1,6 @@
 package com.andreakim.artsupplies;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
@@ -24,6 +25,8 @@ import android.widget.TextView;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
 
@@ -156,7 +159,5 @@ public class ProductsActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
     }
-
-
 
 }

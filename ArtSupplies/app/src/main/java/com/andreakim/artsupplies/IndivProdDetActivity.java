@@ -10,10 +10,12 @@ import android.widget.TextView;
 public class IndivProdDetActivity extends AppCompatActivity {
 
     public TextView getmTxtName() {
+
         return mTxtName;
     }
 
     public void setmTxtName(TextView mTxtName) {
+
         this.mTxtName = mTxtName;
     }
 
@@ -90,6 +92,7 @@ public class IndivProdDetActivity extends AppCompatActivity {
         });
 
     }
+
 }
 
 

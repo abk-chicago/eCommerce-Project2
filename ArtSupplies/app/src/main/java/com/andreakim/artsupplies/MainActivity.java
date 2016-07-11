@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+       // ArtSuppliesAssetHelper db = ShoppingCartActivity.getInstance(this);
+
         setContentView(R.layout.activity_main);
         if (savedInstanceState !=null) {
             Log.i("OnCreate","savedInstanceState is NOT NULL");

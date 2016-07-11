@@ -79,6 +79,9 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
+
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PRODUCTS_TABLE);
@@ -92,6 +95,8 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
             db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"quartet char-kole squares\",\"box of 3\",\"Alphacolor\",\"$2.50\");");
             db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"sumi-e watercolor sets\",\"set of 6\",\"Yasutomo\",\"$19.99\");");
             db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"drawing pads\",\"9 x 12\",\"Canson Edition\",\"$16.50\");");
+
+
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
