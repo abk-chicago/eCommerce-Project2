@@ -34,7 +34,8 @@
         android:id="@+id/clickProd"
         android:paddingTop="12dp"
         android:layout_below="@+id/listViewProducts"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/tv_prods"
+        android:layout_alignEnd="@+id/tv_prods" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,14 +47,15 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
+
+    <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_toCart"
-        android:id="@+id/btn_toCart"
-        android:padding="6dp"
-        android:onClick=""
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:src="@drawable/ic_cart_blk"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignRight="@+id/listViewProducts"
+        android:layout_alignEnd="@+id/listViewProducts"
+        android:id="@+id/view3" />
 </RelativeLayout>

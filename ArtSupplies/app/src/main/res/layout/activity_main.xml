@@ -28,9 +28,10 @@
         android:contentDescription="@string/coloredPencils"
         android:scaleType = "centerCrop"
         android:src="@drawable/pencils"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/txt_main_welcome"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/btn_main" />
 
     <Button
         android:layout_width="match_parent"
@@ -38,9 +39,22 @@
         android:text="@string/btnClickMain"
         android:background="#FD97FA"
         android:id="@+id/btn_main"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_alignTop="@+id/view2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignRight="@+id/txt_main_welcome"
+        android:layout_alignEnd="@+id/txt_main_welcome" />
 
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:clickable="true"
+        android:src="@drawable/ic_cart_blk"
+        android:id="@+id/view2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
