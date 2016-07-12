@@ -7,15 +7,19 @@ import java.util.ArrayList;
 /**
  * Created by andreakim on 7/11/16.
  */
-public class ShoppingCart extends ArrayList<ProductItem> {
+public class ShoppingCart {
+
+public static ShoppingCart mInstance;
+public ArrayList<String> items;
+
+    ShoppingCart() {
+        items = new ArrayList<>();
+    }
 
 
-    // singleton for db instance
-    private static ArtSuppliesAssetHelper mInstance;
-
-    public static synchronized ArtSuppliesAssetHelper getInstance(Context ctx) {
+    public static synchronized ShoppingCart getInstance() {
         if (mInstance == null) {
-            mInstance = new ArtSuppliesAssetHelper(ctx.getApplicationContext());
+            mInstance = new ShoppingCart();
         }
         ;
         return mInstance;

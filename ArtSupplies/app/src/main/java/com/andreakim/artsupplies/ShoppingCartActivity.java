@@ -12,10 +12,17 @@ public class ShoppingCartActivity extends AppCompatActivity {
     Intent mMainIntent;
     Button btnMain;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
+
+        ShoppingCart cart = ShoppingCart.getInstance();
+        cart.items.add("Test2 from ShoppingCartActivity ");
+
 
 
         btnMain = (Button) findViewById(R.id.cart_btn_bk_main);

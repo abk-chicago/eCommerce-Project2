@@ -45,12 +45,15 @@ public class ProductsActivity extends AppCompatActivity {
     private ArtSuppliesAssetHelper mHelper;
     public String mProducts;
     AdapterView.OnItemClickListener mClickListener;
-    
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
+        ShoppingCart cart = ShoppingCart.getInstance();
+
+        cart.items.add("Test1 from ProductsActivity");
 
       //  Toolbar toolbar = (Toolbar) findViewById(R.id.search);
        // setSupportActionBar(toolbar);
@@ -128,6 +131,8 @@ public class ProductsActivity extends AppCompatActivity {
         handleIntent(getIntent());
     }
 
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -155,6 +160,10 @@ public class ProductsActivity extends AppCompatActivity {
             mCursorAdapter.notifyDataSetChanged();
         }
     }
+
+
+
+
 
     @Override
     public void onStart() {
