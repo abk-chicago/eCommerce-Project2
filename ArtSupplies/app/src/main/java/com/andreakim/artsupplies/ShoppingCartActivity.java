@@ -7,11 +7,15 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 public class ShoppingCartActivity extends AppCompatActivity {
 
     Intent mMainIntent;
     Button btnMain;
+    ListView lv;
+    private ListAdapter adapt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,28 +23,25 @@ public class ShoppingCartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_cart);
 
         ShoppingCart cart = ShoppingCart.getInstance();
-        cart.items.add("Test2 from ShoppingCartActivity ");
-
 
 
         btnMain = (Button) findViewById(R.id.cart_btn_bk_main);
-
+        lv = (ListView)findViewById(R.id.listView_cart);
+        lv.setAdapter(adapt);
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ShoppingCart cart = ShoppingCart.getInstance();
+                cart.items.add("Test2 from ShoppingCartActivity ");
                 mMainIntent = new Intent(ShoppingCartActivity.this, MainActivity.class);
                 startActivity(mMainIntent);
-
             }
         });
-
     }
 
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         return super.onCreateView(name, context, attrs);
     }
-
-
 }
