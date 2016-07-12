@@ -85,16 +85,16 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PRODUCTS_TABLE);
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"paint brushes\",\"pointed sable round set of 3\",\"Blick\",\"$4.00\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"watercolor paint\",\"set of 18\",\"Camellia\",\"$5.50\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"x-acto knife\",\"#1 knife\",\"X-acto\",\"$3.65\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"art boards\",\"16 x 20\",\"Canson\",\"$5.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"sculpey\",\"1.75 lb\",\"Sculpey\",\"$10.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"mixed media gift set\",\"watercolor pencils and pitt artists pens - set of 14\",\"Albrecht Dürer\",\"$28.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"lino cutter set\",\"handle and 6 blades\",\"Blick\",\"$8.00\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"quartet char-kole squares\",\"box of 3\",\"Alphacolor\",\"$2.50\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"sumi-e watercolor sets\",\"set of 6\",\"Yasutomo\",\"$19.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"drawing pads\",\"9 x 12\",\"Canson Edition\",\"$16.50\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"Paint brushes\",\"pointed sable round set of 3\",\"Blick\",\"$4.00\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"Watercolor paint\",\"set of 18\",\"Camellia\",\"$5.50\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"X-acto knife\",\"#1 knife\",\"X-acto\",\"$3.65\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Art boards\",\"16 x 20\",\"Canson\",\"$5.99\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Sculpey\",\"1.75 lb\",\"Sculpey\",\"$10.99\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Mixed media gift set\",\"watercolor pencils and pitt artists pens - set of 14\",\"Albrecht Dürer\",\"$28.99\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Lino cutter set\",\"handle and 6 blades\",\"Blick\",\"$8.00\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Quartet char-kole squares\",\"box of 3\",\"Alphacolor\",\"$2.50\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Sumi-e watercolor sets\",\"set of 6\",\"Yasutomo\",\"$19.99\");");
+            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Drawing pads\",\"9 x 12\",\"Canson Edition\",\"$16.50\");");
 
 
     }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,9 +12,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
     Intent mMainIntent;
     Button btnMain;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,4 +36,11 @@ public class ShoppingCartActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        return super.onCreateView(name, context, attrs);
+    }
+
+
 }

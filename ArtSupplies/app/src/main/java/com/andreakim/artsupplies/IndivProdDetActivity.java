@@ -66,14 +66,20 @@ public class IndivProdDetActivity extends AppCompatActivity {
 
         Intent listIntent = getIntent();
         String name = listIntent.getStringExtra("NAME");
+        String prd = "Product Selected: ";
+        String prdProd = prd + name;
         String style = listIntent.getStringExtra("STYLE");
         String mfg = listIntent.getStringExtra("MFG");
+        String mMfg =  "Manufacturer: ";
+        String mftMfg = mMfg + mfg;
         String price = listIntent.getStringExtra("PRICE");
+        String prc = "Price: ";
+        String prcPrice = prc + price;
 
-        mTxtName.setText(name);
+        mTxtName.setText(prdProd);
         mTxtStyle.setText(style);
-        mTextMfg.setText(mfg);
-        mTextPrice.setText(price);
+        mTextMfg.setText(mftMfg);
+        mTextPrice.setText(prcPrice);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_details);
         fab.setOnClickListener(new View.OnClickListener() {
