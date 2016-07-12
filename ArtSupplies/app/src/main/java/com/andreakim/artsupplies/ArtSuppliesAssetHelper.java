@@ -104,6 +104,7 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
         this.onCreate(db);
     }
 
+
     public long addProduct(String name, String style, String mfg, String price){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues product = new ContentValues();

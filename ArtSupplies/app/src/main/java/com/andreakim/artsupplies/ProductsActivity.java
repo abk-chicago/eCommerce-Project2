@@ -45,9 +45,7 @@ public class ProductsActivity extends AppCompatActivity {
     private ArtSuppliesAssetHelper mHelper;
     public String mProducts;
     AdapterView.OnItemClickListener mClickListener;
-
-
-
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,7 @@ public class ProductsActivity extends AppCompatActivity {
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
         mHelper = new ArtSuppliesAssetHelper(ProductsActivity.this);
         mCursor = mHelper.getProducts();
-        handleIntent(getIntent());
+
         mProductsView.setAdapter(mCursorAdapter);
 
         //sends the user to detail page when clicked
@@ -125,6 +123,9 @@ public class ProductsActivity extends AppCompatActivity {
 
         //attach cursor to the ListView
         mProductsView.setAdapter(mCursorAdapter);
+
+        //moved to end of method
+        handleIntent(getIntent());
     }
 
     @Override
