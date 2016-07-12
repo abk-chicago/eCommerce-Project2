@@ -9,8 +9,16 @@ import android.widget.TextView;
 
 public class IndivProdDetActivity extends AppCompatActivity {
 
-    public TextView getmTxtName() {
 
+    public IndivProdDetActivity(TextView mTxtName, TextView mTxtStyle, TextView mTextMfg, TextView mTextPrice, Intent mMainIntent) {
+        this.mTxtName = mTxtName;
+        this.mTxtStyle = mTxtStyle;
+        this.mTextMfg = mTextMfg;
+        this.mTextPrice = mTextPrice;
+        this.mMainIntent = mMainIntent;
+    }
+
+    public TextView getmTxtName() {
         return mTxtName;
     }
 

@@ -11,9 +11,11 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -45,16 +47,32 @@ public class ProductsActivity extends AppCompatActivity {
     AdapterView.OnItemClickListener mClickListener;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
-//attach buttons
+      //  Toolbar toolbar = (Toolbar) findViewById(R.id.search);
+       // setSupportActionBar(toolbar);
+
+        //attach buttons
         btnCart = (Button) findViewById(R.id.btn_toCart);
         btnMain = (Button) findViewById(R.id.btn_toMain);
 
-//onClickListener for mMainIntent
+
+        mProductsView = (ListView) findViewById(R.id.listViewProducts);
+        mHelper = new ArtSuppliesAssetHelper(ProductsActivity.this);
+        mCursor = mHelper.getProducts();
+        handleIntent(getIntent());
+        mProductsView.setAdapter(mCursorAdapter);
+
+        //sends the user to detail page when clicked
+        mProductsView.setOnItemClickListener(mClickListener);
+
+
+        //onClickListener for mMainIntent
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +81,7 @@ public class ProductsActivity extends AppCompatActivity {
             }
         });
 
-//onClickListener for ShoppingCartIntent
+        //onClickListener for ShoppingCartIntent
         btnCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,14 +90,7 @@ public class ProductsActivity extends AppCompatActivity {
             }
         });
 
-        mProductsView = (ListView) findViewById(R.id.listViewProducts);
-        mHelper = new ArtSuppliesAssetHelper(ProductsActivity.this);
-
-        mCursor = mHelper.getProducts();
-        handleIntent(getIntent());
-        mProductsView.setAdapter(mCursorAdapter);
-
-// to put db items in ListView rows
+        // to put db items in ListView rows
         CursorAdapter mCursorAdapter = new CursorAdapter(ProductsActivity.this, mCursor, 0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
@@ -94,10 +105,6 @@ public class ProductsActivity extends AppCompatActivity {
                 txt.setText(rowData);
             }
         };
-
-
-        //sends the user to detail page when clicked
-        mProductsView.setOnItemClickListener(mClickListener);
 
         mClickListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -122,9 +129,8 @@ public class ProductsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.products_menu, menu);
-
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.products_menu, menu);
 
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
@@ -132,7 +138,6 @@ public class ProductsActivity extends AppCompatActivity {
                 (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
-
         return true;
     }
 

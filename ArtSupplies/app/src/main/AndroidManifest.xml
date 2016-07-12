@@ -17,22 +17,23 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
         <activity android:name=".ProductsActivity" />
-        <meta-datas
+        <meta-data
             android:name="android.app.searchable"
             android:resource="@xml/searchable" />
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
 
-        <intent-filter>
-            <action android:name="android.intent.action.SEARCH" />
-        </intent-filter>
+            </intent-filter>
+
         <activity android:name=".IndivProdDetActivity" />
-        <activity android:name=".ShoppingCartActivity"></activity><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
-     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <activity android:name=".ShoppingCartActivity"/>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
     </application>
-
 </manifest>
