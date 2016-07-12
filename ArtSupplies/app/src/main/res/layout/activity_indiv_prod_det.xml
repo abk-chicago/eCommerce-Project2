@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name"
+        android:layout_marginBottom="14dp"
         android:id="@+id/textV_name" />
 
     <TextView
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Style"
+        android:layout_marginBottom="14dp"
         android:layout_below="@id/textV_name"
         android:id="@+id/textV_style" />
 
@@ -30,6 +32,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Manufacturer"
+        android:layout_marginBottom="14dp"
         android:layout_below="@id/textV_style"
         android:id="@+id/textV_mfg" />
     <TextView
@@ -37,6 +40,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Price"
+        android:layout_marginBottom="14dp"
         android:layout_below="@id/textV_mfg"
         android:id="@+id/textV_price" />
 
@@ -49,14 +53,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_cart"
-        android:id="@+id/button3"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:layout_width="200dp"

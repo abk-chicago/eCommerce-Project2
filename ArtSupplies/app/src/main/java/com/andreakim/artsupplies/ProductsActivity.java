@@ -85,6 +85,7 @@ public class ProductsActivity extends AppCompatActivity {
         mProductsView.setOnItemClickListener(mClickListener);
 
 
+
         //onClickListener for mMainIntent
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
