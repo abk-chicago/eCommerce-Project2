@@ -10,73 +10,83 @@
     tools:context="com.andreakim.artsupplies.ShoppingCartActivity">
 
     <TextView
+        android:id="@+id/txtView_shopping_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/txtView_shopping_cart"
-        android:id="@+id/txtView_shopping_cart"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:text="@string/txtView_shopping_cart"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
+        android:id="@+id/btn_checkout"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/clear"
-        android:id="@+id/btn_checkout"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/colorButtons"
+        android:padding="8dp"
+        android:text="@string/clear" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/update"
         android:id="@+id/btn_clear"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/delete"
-        android:id="@+id/btn_update"
-        android:layout_above="@+id/button4"
-        android:layout_alignRight="@+id/button4"
-        android:layout_alignEnd="@+id/button4" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorButtons"
+        android:padding="8dp"
+        android:text="@string/update" />
 
     <Button
+        android:id="@+id/btn_update"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/checkout"
+        android:layout_above="@+id/button4"
+        android:layout_alignEnd="@+id/button4"
+        android:layout_alignRight="@+id/button4"
+        android:background="@color/colorButtons"
+        android:padding="8dp"
+        android:text="@string/delete" />
+
+    <Button
         android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/btn_clear"
+        android:layout_alignEnd="@+id/listView_cart"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/listView_cart"
-        android:layout_alignEnd="@+id/listView_cart"
+        android:background="@color/shadowBtn"
+        android:padding="8dp"
+        android:text="@string/checkout"
         android:textStyle="bold" />
 
     <ListView
+        android:id="@+id/listView_cart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView_cart"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_above="@+id/btn_update"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/txtView_shopping_cart" />
 
     <Button
+        android:id="@+id/cart_btn_bk_main"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_toMain"
-        android:id="@+id/cart_btn_bk_main"
         android:layout_above="@+id/button4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/colorButtons"
+        android:padding="8dp"
+        android:text="@string/btn_toMain" />
 
 </RelativeLayout>

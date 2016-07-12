@@ -10,6 +10,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class IndivProdDetActivity extends AppCompatActivity {
@@ -81,16 +83,20 @@ public class IndivProdDetActivity extends AppCompatActivity {
         mTextMfg.setText(mftMfg);
         mTextPrice.setText(prcPrice);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_details);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mShoppingCartIntent = new Intent(IndivProdDetActivity.this, ShoppingCartActivity.class);
-                startActivity(mShoppingCartIntent);
-            }
-        });
-
         Button btnMain= (Button) findViewById(R.id.back_main);
+        ListView lv;
+        lv = (ListView)findViewById(R.id.listView_cart);
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_details);
+        fab.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mShoppingCartIntent = new Intent(IndivProdDetActivity.this, ShoppingCartActivity.class);
+                        ShoppingCart cart = ShoppingCart.getInstance();
+                        cart.items.add("Test2 from ShoppingCartActivity ");
+                        startActivity(mShoppingCartIntent);
+                    }
+        });
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,8 +110,6 @@ public class IndivProdDetActivity extends AppCompatActivity {
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         return super.onCreateView(name, context, attrs);
     }
-
-
 }
 
 

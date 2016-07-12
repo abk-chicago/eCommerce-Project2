@@ -13,9 +13,9 @@ import android.widget.ListView;
 public class ShoppingCartActivity extends AppCompatActivity {
 
     Intent mMainIntent;
-    Button btnMain;
     ListView lv;
-    private ListAdapter adapt;
+    Button btnMain;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,16 +24,12 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         ShoppingCart cart = ShoppingCart.getInstance();
 
-
         btnMain = (Button) findViewById(R.id.cart_btn_bk_main);
         lv = (ListView)findViewById(R.id.listView_cart);
-        lv.setAdapter(adapt);
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShoppingCart cart = ShoppingCart.getInstance();
-                cart.items.add("Test2 from ShoppingCartActivity ");
                 mMainIntent = new Intent(ShoppingCartActivity.this, MainActivity.class);
                 startActivity(mMainIntent);
             }

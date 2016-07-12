@@ -42,7 +42,8 @@
         android:layout_height="wrap_content"
         android:text="@string/btn_toMain"
         android:id="@+id/btn_toMain"
-        android:padding="6dp"
+        android:padding="8dp"
+        android:background="@color/colorButtons"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
