@@ -14,13 +14,12 @@ import android.widget.TextView;
 
 public class IndivProdDetActivity extends AppCompatActivity {
 
-//    public IndivProdDetActivity(TextView mTxtName, TextView mTxtStyle, TextView mTextMfg, TextView mTextPrice, Intent mMainIntent) {
-//        this.mTxtName = mTxtName;
-//        this.mTxtStyle = mTxtStyle;
-//        this.mTextMfg = mTextMfg;
-//        this.mTextPrice = mTextPrice;
-//        this.mMainIntent = mMainIntent;
-//    }
+    TextView mTxtName;
+    TextView mTxtStyle;
+    TextView mTextMfg;
+    TextView mTextPrice;
+    Intent mMainIntent;
+    Intent mShoppingCartIntent;
 
     public TextView getmTxtName() {
         return mTxtName;
@@ -54,13 +53,6 @@ public class IndivProdDetActivity extends AppCompatActivity {
     public void setmTextPrice(TextView mTextPrice) {
         this.mTextPrice = mTextPrice;
     }
-
-    TextView mTxtName;
-    TextView mTxtStyle;
-    TextView mTextMfg;
-    TextView mTextPrice;
-    Intent mMainIntent;
-    Intent mShoppingCartIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

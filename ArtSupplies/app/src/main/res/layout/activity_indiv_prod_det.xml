@@ -11,38 +11,45 @@
 
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Name"
-        android:layout_marginBottom="14dp"
-        android:id="@+id/textV_name" />
+        android:id="@+id/textV_name"
+        android:layout_toLeftOf="@+id/imageViewProduct"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Style"
-        android:layout_marginBottom="14dp"
-        android:layout_below="@id/textV_name"
-        android:id="@+id/textV_style" />
+        android:id="@+id/textV_style"
+        android:layout_below="@+id/imageViewProduct"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Manufacturer"
-        android:layout_marginBottom="14dp"
-        android:layout_below="@id/textV_style"
-        android:id="@+id/textV_mfg" />
+        android:id="@+id/textV_mfg"
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/textV_style"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Price"
-        android:layout_marginBottom="14dp"
-        android:layout_below="@id/textV_mfg"
-        android:id="@+id/textV_price" />
+        android:id="@+id/textV_price"
+        android:layout_below="@+id/textV_mfg"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="39dp" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -58,8 +65,8 @@
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:id="@+id/imageViewProduct"
-        android:layout_alignTop="@+id/textV_name"
-        android:src="@drawable/dummyproduct"
+        android:src="@drawable/pencil200"
+        android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
