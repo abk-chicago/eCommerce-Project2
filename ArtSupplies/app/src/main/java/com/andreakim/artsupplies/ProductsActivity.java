@@ -8,6 +8,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -55,11 +57,21 @@ public class ProductsActivity extends AppCompatActivity {
 
         cart.items.add("Test1 from ProductsActivity");
 
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_products);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mShoppingCartIntent = new Intent(ProductsActivity.this, ShoppingCartActivity.class);
+                startActivity(mShoppingCartIntent);
+            }
+        });
+
       //  Toolbar toolbar = (Toolbar) findViewById(R.id.search);
        // setSupportActionBar(toolbar);
 
         //attach buttons
-        btnCart = (Button) findViewById(R.id.btn_toCart);
+
         btnMain = (Button) findViewById(R.id.btn_toMain);
 
 
@@ -79,15 +91,6 @@ public class ProductsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mMainIntent = new Intent(ProductsActivity.this, MainActivity.class);
                 startActivity(mMainIntent);
-            }
-        });
-
-        //onClickListener for ShoppingCartIntent
-        btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mShoppingCartIntent = new Intent(ProductsActivity.this, ShoppingCartActivity.class);
-                startActivity(mShoppingCartIntent);
             }
         });
 

@@ -57,5 +57,5 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/listViewProducts"
         android:layout_alignEnd="@+id/listViewProducts"
-        android:id="@+id/view3" />
+        android:id="@+id/fab_products" />
 </RelativeLayout>

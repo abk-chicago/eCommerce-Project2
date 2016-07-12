@@ -76,6 +76,6 @@
         android:layout_alignBottom="@+id/back_main"
         android:layout_alignRight="@+id/imageViewProduct"
         android:layout_alignEnd="@+id/imageViewProduct"
-        android:id="@+id/view" />
+        android:id="@+id/fab_details" />
 
 </RelativeLayout>

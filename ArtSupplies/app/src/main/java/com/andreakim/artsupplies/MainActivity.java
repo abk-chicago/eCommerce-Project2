@@ -4,6 +4,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
@@ -36,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-       // ArtSuppliesAssetHelper db = ShoppingCartActivity.getInstance(this);
-
         setContentView(R.layout.activity_main);
         if (savedInstanceState !=null) {
             Log.i("OnCreate","savedInstanceState is NOT NULL");
@@ -47,17 +46,24 @@ public class MainActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.imageView);
 
         mClickBtn = (Button) findViewById(R.id.btn_main);
-
         mClickBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mProductIntent = new Intent(MainActivity.this, ProductsActivity.class);
                 startActivity(mProductIntent);
             }
-         });
+        });
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_main);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mShoppingCartIntent = new Intent(MainActivity.this, ShoppingCartActivity.class);
+                startActivity(mShoppingCartIntent);
+            }
+        });
+
+
     }
-
-
-
 }
 
