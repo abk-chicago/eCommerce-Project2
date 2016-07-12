@@ -1,23 +1,26 @@
 package com.andreakim.artsupplies;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class IndivProdDetActivity extends AppCompatActivity {
 
-    public IndivProdDetActivity(TextView mTxtName, TextView mTxtStyle, TextView mTextMfg, TextView mTextPrice, Intent mMainIntent) {
-        this.mTxtName = mTxtName;
-        this.mTxtStyle = mTxtStyle;
-        this.mTextMfg = mTextMfg;
-        this.mTextPrice = mTextPrice;
-        this.mMainIntent = mMainIntent;
-    }
+//    public IndivProdDetActivity(TextView mTxtName, TextView mTxtStyle, TextView mTextMfg, TextView mTextPrice, Intent mMainIntent) {
+//        this.mTxtName = mTxtName;
+//        this.mTxtStyle = mTxtStyle;
+//        this.mTextMfg = mTextMfg;
+//        this.mTextPrice = mTextPrice;
+//        this.mMainIntent = mMainIntent;
+//    }
 
     public TextView getmTxtName() {
         return mTxtName;
@@ -49,14 +52,6 @@ public class IndivProdDetActivity extends AppCompatActivity {
     }
 
     public void setmTextPrice(TextView mTextPrice) {
-        this.mTextPrice = mTextPrice;
-    }
-
-    public IndivProdDetActivity(TextView mTxtName, TextView mTxtStyle, TextView mTextMfg, TextView mTextPrice) {
-        this.mTxtName = mTxtName;
-        this.mTxtStyle = mTxtStyle;
-        this.mTextMfg = mTextMfg;
-
         this.mTextPrice = mTextPrice;
     }
 
@@ -107,6 +102,12 @@ public class IndivProdDetActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public View onCreateView(String name, Context context, AttributeSet attrs) {
+        return super.onCreateView(name, context, attrs);
+    }
+
+
 }
 
 

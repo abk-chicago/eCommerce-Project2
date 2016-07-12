@@ -36,11 +36,10 @@ public class ProductsActivity extends AppCompatActivity {
 
     //declaring member variables, intents, cursor, buttons
     Intent mMainIntent;
-    Intent mDetailIntent;
     Intent mShoppingCartIntent;
+    Intent mDetailIntent;
     ListView mProductsView;
     Cursor mCursor;
-    Button btnCart;
     Button btnMain;
 
     private CursorAdapter mCursorAdapter;
@@ -74,15 +73,11 @@ public class ProductsActivity extends AppCompatActivity {
 
         btnMain = (Button) findViewById(R.id.btn_toMain);
 
-
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
         mHelper = new ArtSuppliesAssetHelper(ProductsActivity.this);
         mCursor = mHelper.getProducts();
 
         mProductsView.setAdapter(mCursorAdapter);
-
-        //sends the user to detail page when clicked
-        mProductsView.setOnItemClickListener(mClickListener);
 
 
 
@@ -111,6 +106,7 @@ public class ProductsActivity extends AppCompatActivity {
             }
         };
 
+        // to send (putExtra) info from ProductsActivity into the detail activity (IndivProdDetailActivity)
         mClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -127,6 +123,8 @@ public class ProductsActivity extends AppCompatActivity {
                 startActivity(mDetailIntent);
             }
         };
+        //sends the user to detail page when clicked
+        mProductsView.setOnItemClickListener(mClickListener);
 
         //attach cursor to the ListView
         mProductsView.setAdapter(mCursorAdapter);
@@ -164,10 +162,6 @@ public class ProductsActivity extends AppCompatActivity {
             mCursorAdapter.notifyDataSetChanged();
         }
     }
-
-
-
-
 
     @Override
     public void onStart() {
