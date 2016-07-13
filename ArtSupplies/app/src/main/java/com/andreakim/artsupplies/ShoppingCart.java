@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by andreakim on 7/11/16.
  */
-public class ShoppingCart extends ArrayList<ProductItem> {
+public class ShoppingCart extends ArrayList<String> {
 
 public static ShoppingCart mInstance;
 public ArrayList<String> items;

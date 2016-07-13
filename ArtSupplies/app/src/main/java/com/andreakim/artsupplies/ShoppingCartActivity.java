@@ -30,11 +30,14 @@ public class ShoppingCartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
+        ShoppingCart cart = ShoppingCart.getInstance();
+
+
         btnMain = (Button) findViewById(R.id.cart_btn_bk_main);
 
-        cart = (ArrayList<ProductItem>)getIntent().getSerializableExtra("cart");
+        //(ArrayList<ProductItem>)getIntent().getSerializableExtra("cart");
 
-        ArrayAdapter<ProductItem> itemsAdapter =
+        ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cart);
         lv = (ListView) findViewById(R.id.listView_cart);
         lv.setAdapter(itemsAdapter);

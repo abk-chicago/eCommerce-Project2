@@ -32,7 +32,6 @@ public class IndivProdDetActivity extends AppCompatActivity {
     ShoppingCart cart;
     String extra;
     ListView lv;
-    ArrayList<ProductItem> cartadded = new ArrayList<>();
     ProductItem kart;
 
 
@@ -109,9 +108,9 @@ public class IndivProdDetActivity extends AppCompatActivity {
                 mShoppingCartIntent = new Intent(IndivProdDetActivity.this, ShoppingCartActivity.class);
                 cart = ShoppingCart.getInstance();
 
-                 ProductItem kart = new ProductItem(prdProd,style,mftMfg,prcPrice);
-                cartadded.add(kart);
-                mShoppingCartIntent.putExtra("cart",cartadded);
+                ProductItem kart = new ProductItem(prdProd,style,mftMfg,prcPrice);
+                cart.add(kart.toString());
+                //mShoppingCartIntent.putExtra("cart",cartadded);
                 startActivity(mShoppingCartIntent);
             }
         });
