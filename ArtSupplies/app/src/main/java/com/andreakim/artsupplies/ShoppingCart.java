@@ -21,7 +21,6 @@ public ArrayList<String> items;
         if (mInstance == null) {
             mInstance = new ShoppingCart();
         }
-        ;
         return mInstance;
     }
 

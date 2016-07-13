@@ -16,14 +16,20 @@ public class ShoppingCartActivity extends AppCompatActivity {
     ListView lv;
     Button btnMain;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
+// should I have mInstance (singleton) in here?
+
         ShoppingCart cart = ShoppingCart.getInstance();
 
         btnMain = (Button) findViewById(R.id.cart_btn_bk_main);
+
         lv = (ListView)findViewById(R.id.listView_cart);
 
         btnMain.setOnClickListener(new View.OnClickListener() {

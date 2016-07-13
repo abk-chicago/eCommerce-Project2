@@ -121,49 +121,49 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper {
     }
 
     // to search Products Table
-//    public Cursor searchArtSupplies(String query) {
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
+    public Cursor searchAllArtCategories(String query) {
+
+        SQLiteDatabase db = this.getReadableDatabase();
 
 //        Cursor cursor = db.query(PRODUCTS_TABLE_NAME, // a. table
 //                null, // b. column names
 //                NAME + " LIKE ?" + " OR " + STYLE + " LIKE ?" + " OR " + MFG + " LIKE ?", // c. selections
 //                new String[]{"%" + query + "%"}, // d. selections args
 //                null, null, null, null);
-//        String[] selectionArgs = new String[] { query + "%" };
+        String[] selectionArgs = new String[] { query + "%" };
 
-    //  Cursor cursor =  db.rawQuery("select * from Products where "+ NAME+ " like '%" + query+"%'", null);
-    //    return cursor;
- //   }
+      Cursor cursor =  db.rawQuery("select * from Products where "+ NAME+ " like '%" + query+"%'", null);
+        return cursor;
+    }
 
-    public List<ProductItem> searchAllArtCategories(String val) {
-        List<ProductItem> categories = new ArrayList<>();
-        SQLiteDatabase db = getReadableDatabase();
-        StringBuilder query = new StringBuilder();
-        query.append("SELECT * FROM ");
-        query.append(PRODUCTS_TABLE_NAME);
-        query.append(" WHERE ");
-        query.append(NAME);
-        query.append(" LIKE '%");
-        query.append(val);
-        query.append("%'");
-        Cursor cursor = db.rawQuery(query.toString(), null);
-        if (cursor.moveToFirst()) {
-            do {
-                categories.add(new ProductItem(
-                        cursor.getString(cursor.getColumnIndex(NAME)),
-                        cursor.getString(cursor.getColumnIndex(STYLE)),
-                        cursor.getString(cursor.getColumnIndex(MFG)),
-                        cursor.getString(cursor.getColumnIndex(PRICE))
-                ));
-            } while(cursor.moveToNext());
-        }
-        cursor.close();
-        return categories;
+//    public Cursor searchAllArtCategories(String val) {
+//        List<ProductItem> categories = new ArrayList<>();
+//        SQLiteDatabase db = getReadableDatabase();
+//        StringBuilder query = new StringBuilder();
+//        query.append("SELECT * FROM ");
+//        query.append(PRODUCTS_TABLE_NAME);
+//        query.append(" WHERE ");
+//        query.append(NAME);
+//        query.append(" LIKE '%");
+//        query.append(val);
+//        query.append("%'");
+//        Cursor cursor = db.rawQuery(query.toString(), null);
+//        if (cursor.moveToFirst()) {
+//            do {
+//                categories.add(new ProductItem(
+//                        cursor.getString(cursor.getColumnIndex(NAME)),
+//                        cursor.getString(cursor.getColumnIndex(STYLE)),
+//                        cursor.getString(cursor.getColumnIndex(MFG)),
+//                        cursor.getString(cursor.getColumnIndex(PRICE))
+//                ));
+//            } while(cursor.moveToNext());
+//        }
+//        return  cursor;
+
 
     }
 
-}
+
 
 
 

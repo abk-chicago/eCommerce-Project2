@@ -78,8 +78,6 @@ public class ProductsActivity extends AppCompatActivity {
         mHelper = new ArtSuppliesAssetHelper(ProductsActivity.this);
         mCursor = mHelper.getProducts();
 
-        mProductsView.setAdapter(mCursorAdapter);
-
 
         //onClickListener for mMainIntent
         btnMain.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +89,7 @@ public class ProductsActivity extends AppCompatActivity {
         });
 
         // to put db items in ListView rows
-        CursorAdapter mCursorAdapter = new CursorAdapter(ProductsActivity.this, mCursor, 0) {
+         mCursorAdapter = new CursorAdapter(ProductsActivity.this, mCursor, 0) {
             @Override
             public View newView(Context context, Cursor cursor, ViewGroup parent) {
                 return LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
@@ -164,15 +162,16 @@ public class ProductsActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         mHelper = new ArtSuppliesAssetHelper(this);
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String val = intent.getStringExtra(SearchManager.QUERY);
+            String query = intent.getStringExtra(SearchManager.QUERY);
 
-//            mCursor = mHelper.searchAllArtCategories(val);
-//            mCursor.moveToFirst();
-//            if (mCursor != null && mCursorAdapter != null) {
-//                mCursorAdapter.changeCursor(mCursor);
-//                mCursorAdapter.notifyDataSetChanged();
+            mCursor = mHelper.searchAllArtCategories(query);
+            mCursor.moveToFirst();
+            if (mCursor != null && mCursorAdapter != null) {
+                mCursorAdapter.changeCursor(mCursor);
+                mCursorAdapter.notifyDataSetChanged();
             }
         }
+    }
 
     @Override
     public void onStart() {
