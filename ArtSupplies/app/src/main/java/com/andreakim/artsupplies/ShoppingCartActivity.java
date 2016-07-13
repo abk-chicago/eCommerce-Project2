@@ -16,7 +16,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
     ListView lv;
     Button btnMain;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

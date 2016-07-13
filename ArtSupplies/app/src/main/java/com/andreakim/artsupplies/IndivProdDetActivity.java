@@ -87,6 +87,8 @@ public class IndivProdDetActivity extends AppCompatActivity {
         ListView lv;
         lv = (ListView)findViewById(R.id.listView_cart);
 
+        //need to make the FAB **ADD** to the shopping cart:
+
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_details);
         fab.setOnClickListener(new View.OnClickListener() {
                     @Override

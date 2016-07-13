@@ -5,9 +5,51 @@ package com.andreakim.artsupplies;
  */
 public class ProductItem {
 
+    private String mPaintbrush;
+    private String mProduct;
+    private String mName;
+    private String mStyle;
+    private String mMfg;
+    private String mPrice;
 
-    String mPaintbrush;
-    String mProduct;
+    public ProductItem(String mName, String mStyle, String mMfg, String mPrice) {
+        this.mName = mName;
+        this.mStyle = mStyle;
+        this.mPrice = mPrice;
+        this.mMfg = mMfg;
+    }
+
+    public String getmPrice() {
+        return mPrice;
+    }
+
+    public void setmPrice(String mPrice) {
+        this.mPrice = mPrice;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
+    }
+
+    public String getmStyle() {
+        return mStyle;
+    }
+
+    public void setmStyle(String mStyle) {
+        this.mStyle = mStyle;
+    }
+
+    public String getmMfg() {
+        return mMfg;
+    }
+
+    public void setmMfg(String mMfg) {
+        this.mMfg = mMfg;
+    }
 
     public String getPaintbrush() {
         return mPaintbrush;
@@ -25,9 +67,7 @@ public class ProductItem {
         mPaintbrush = paintbrush;
     }
 
-    public ProductItem() {
 
-    }
 
 
 

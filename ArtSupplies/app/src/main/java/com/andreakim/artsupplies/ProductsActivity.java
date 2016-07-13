@@ -5,6 +5,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
@@ -30,6 +31,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsActivity extends AppCompatActivity {
@@ -46,7 +48,6 @@ public class ProductsActivity extends AppCompatActivity {
     private ArtSuppliesAssetHelper mHelper;
     public String mProducts;
     AdapterView.OnItemClickListener mClickListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +67,8 @@ public class ProductsActivity extends AppCompatActivity {
             }
         });
 
-      //  Toolbar toolbar = (Toolbar) findViewById(R.id.search);
-       // setSupportActionBar(toolbar);
+        //  Toolbar toolbar = (Toolbar) findViewById(R.id.search);
+        // setSupportActionBar(toolbar);
 
         //attach buttons
 
@@ -78,7 +79,6 @@ public class ProductsActivity extends AppCompatActivity {
         mCursor = mHelper.getProducts();
 
         mProductsView.setAdapter(mCursorAdapter);
-
 
 
         //onClickListener for mMainIntent
@@ -99,10 +99,19 @@ public class ProductsActivity extends AppCompatActivity {
 
             @Override
             public void bindView(View view, Context context, Cursor cursor) {
-                TextView txt = (TextView) view.findViewById(android.R.id.text1);
-                String rowData = mCursor.getString(cursor.getColumnIndex("mfg")) + " : " + mCursor.getString(cursor.getColumnIndex("name")) + " : " + mCursor.getString(cursor.getColumnIndex("style")) + " : " + mCursor.getString(cursor.getColumnIndex("price"));
+                try {
+                    System.out.println(mCursor.getPosition());  // for debugging
+                    TextView txt = (TextView) view.findViewById(android.R.id.text1);
 
-                txt.setText(rowData);
+                    String rowData = mCursor.getString(cursor.getColumnIndex("mfg")) +
+                            " : " + mCursor.getString(cursor.getColumnIndex("name")) +
+                            " : " + mCursor.getString(cursor.getColumnIndex("style")) +
+                            " : " + mCursor.getString(cursor.getColumnIndex("price"));
+
+                    txt.setText(rowData);
+                } catch (CursorIndexOutOfBoundsException cioobe) {
+                    cioobe.printStackTrace();
+                }
             }
         };
 
@@ -133,8 +142,6 @@ public class ProductsActivity extends AppCompatActivity {
         handleIntent(getIntent());
     }
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -155,13 +162,17 @@ public class ProductsActivity extends AppCompatActivity {
     }
 
     private void handleIntent(Intent intent) {
+        mHelper = new ArtSuppliesAssetHelper(this);
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            mCursor = mHelper.searchArtSupplies(query);
-            mCursorAdapter.changeCursor(mCursor);
-            mCursorAdapter.notifyDataSetChanged();
+            String val = intent.getStringExtra(SearchManager.QUERY);
+
+//            mCursor = mHelper.searchAllArtCategories(val);
+//            mCursor.moveToFirst();
+//            if (mCursor != null && mCursorAdapter != null) {
+//                mCursorAdapter.changeCursor(mCursor);
+//                mCursorAdapter.notifyDataSetChanged();
+            }
         }
-    }
 
     @Override
     public void onStart() {

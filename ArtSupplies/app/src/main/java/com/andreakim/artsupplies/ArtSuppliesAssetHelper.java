@@ -9,9 +9,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
 
-
-public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
+public class ArtSuppliesAssetHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Art_Supplies.db";
     private static final int DATABASE_VERSION = 12;
@@ -19,9 +20,7 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
     public static final String CUSTOMER_TABLE_NAME = "Customer";
     public static final String ORDER_DETAIL_TABLE_NAME = "Order";
 
-
     private static final String TAG = SQLiteOpenHelper.class.getCanonicalName();
-
 
     // for PRODUCTS TABLE
     public static final String ID = "_id";
@@ -38,9 +37,9 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
     public static final String PRETAX_TOTAL = "PRETAX TOTAL";
 
     //setting up colums for the 3 tables in DB
-    public static final String[] products_columns = {ID,NAME,STYLE,MFG,PRICE};
-    public static final String[] customer_columns = {ID,NAME,STATE,ITEMS_ORDERED};
-    public static final String[] order_columns = {ID,ORDER_NO,QUANTITY,PRETAX_TOTAL};
+    public static final String[] products_columns = {ID, NAME, STYLE, MFG, PRICE};
+    public static final String[] customer_columns = {ID, NAME, STATE, ITEMS_ORDERED};
+    public static final String[] order_columns = {ID, ORDER_NO, QUANTITY, PRETAX_TOTAL};
 
     // setting up 2nd and 3rd tables
     // products table is already in the database file
@@ -79,33 +78,28 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-
-
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_PRODUCTS_TABLE);
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"Paint brushes\",\"pointed sable round set of 3\",\"Blick\",\"$4.00\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"Watercolor paint\",\"set of 18\",\"Camellia\",\"$5.50\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"X-acto knife\",\"#1 knife\",\"X-acto\",\"$3.65\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Art boards\",\"16 x 20\",\"Canson\",\"$5.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Sculpey\",\"1.75 lb\",\"Sculpey\",\"$10.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Mixed media gift set\",\"watercolor pencils and pitt artists pens - set of 14\",\"Albrecht Dürer\",\"$28.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Lino cutter set\",\"handle and 6 blades\",\"Blick\",\"$8.00\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Quartet char-kole squares\",\"box of 3\",\"Alphacolor\",\"$2.50\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Sumi-e watercolor sets\",\"set of 6\",\"Yasutomo\",\"$19.99\");");
-            db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Drawing pads\",\"9 x 12\",\"Canson Edition\",\"$16.50\");");
-
-
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"Paint brushes\",\"pointed sable round set of 3\",\"Blick\",\"$4.00\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null,\"Watercolor paint\",\"set of 18\",\"Camellia\",\"$5.50\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"X-acto knife\",\"#1 knife\",\"X-acto\",\"$3.65\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Art boards\",\"16 x 20\",\"Canson\",\"$5.99\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Sculpey\",\"1.75 lb\",\"Sculpey\",\"$10.99\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Mixed media gift set\",\"watercolor pencils and pitt artists pens - set of 14\",\"Albrecht Dürer\",\"$28.99\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Lino cutter set\",\"handle and 6 blades\",\"Blick\",\"$8.00\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Quartet char-kole squares\",\"box of 3\",\"Alphacolor\",\"$2.50\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Sumi-e watercolor sets\",\"set of 6\",\"Yasutomo\",\"$19.99\");");
+        db.execSQL("INSERT INTO PRODUCTS VALUES (null, \"Drawing pads\",\"9 x 12\",\"Canson Edition\",\"$16.50\");");
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DROP_PRODUCTS_TABLE);
         this.onCreate(db);
     }
 
-
-    public long addProduct(String name, String style, String mfg, String price){
+    public long addProduct(String name, String style, String mfg, String price) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues product = new ContentValues();
         product.put(NAME, name);
@@ -119,65 +113,55 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper{
     }
 
     // HERE ********** is the getProducts method.
-    public Cursor getProducts(){
+    public Cursor getProducts() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(PRODUCTS_TABLE_NAME, // a. table
-                null,null, null,null,null,null,null);
+                null, null, null, null, null, null, null);
         return cursor;
     }
 
     // to search Products Table
-    public Cursor searchArtSupplies(String query) {
-        SQLiteDatabase db = this.getReadableDatabase();
+//    public Cursor searchArtSupplies(String query) {
+//
+//        SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.query(PRODUCTS_TABLE_NAME, // a. table
-                null, // b. column names
-                NAME + " LIKE ?" + " OR " + STYLE + " LIKE ?" + " OR " + MFG, // c. selections
-                new String[]{ "%" + query + "%"}, // d. selections args
-                null,null,null,null);
-        return cursor;
-    }
-    public Cursor searchArt(String query) {
+//        Cursor cursor = db.query(PRODUCTS_TABLE_NAME, // a. table
+//                null, // b. column names
+//                NAME + " LIKE ?" + " OR " + STYLE + " LIKE ?" + " OR " + MFG + " LIKE ?", // c. selections
+//                new String[]{"%" + query + "%"}, // d. selections args
+//                null, null, null, null);
+//        String[] selectionArgs = new String[] { query + "%" };
 
-        if ((NAME != null) && (MFG != null) && (STYLE != null)) {
-            String name = "%" + NAME + "% ";
-            String mfg = "%" + MFG + "% ";
-            String style = "%" + STYLE + "% ";
+    //  Cursor cursor =  db.rawQuery("select * from Products where "+ NAME+ " like '%" + query+"%'", null);
+    //    return cursor;
+ //   }
 
-            SQLiteDatabase db = this.getReadableDatabase();
-            String selectQuery = " select * from Products where name like '" + name + "' or style like '" + style + "' or mfg like '" + mfg + " %" + query + "%";
-
-            Cursor cursor = db.rawQuery(selectQuery, null);
-            return cursor;
+    public List<ProductItem> searchAllArtCategories(String val) {
+        List<ProductItem> categories = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT * FROM ");
+        query.append(PRODUCTS_TABLE_NAME);
+        query.append(" WHERE ");
+        query.append(NAME);
+        query.append(" LIKE '%");
+        query.append(val);
+        query.append("%'");
+        Cursor cursor = db.rawQuery(query.toString(), null);
+        if (cursor.moveToFirst()) {
+            do {
+                categories.add(new ProductItem(
+                        cursor.getString(cursor.getColumnIndex(NAME)),
+                        cursor.getString(cursor.getColumnIndex(STYLE)),
+                        cursor.getString(cursor.getColumnIndex(MFG)),
+                        cursor.getString(cursor.getColumnIndex(PRICE))
+                ));
+            } while(cursor.moveToNext());
         }
-
-
-        //SQLiteAssetHelper dbSetup = new SQLiteAssetHelper();
-        SQLiteDatabase db = getWritableDatabase();
-        Cursor c = db.query(PRODUCTS_TABLE_NAME, null, null, null, null, null, null, null);
-        return c;
-    }
-    public ProductItem getProductById(int id) {
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        String[] projection = new String[] { "ID" , "NAME", "STYLE", "MFG" , "PRICE"};
-        String selection = " id = ?";
-        String[] SelectionArgs = new String[] {Integer.toString(id)};
-
-
-        Cursor cursor = db.query("PRODUCTS", projection, selection, SelectionArgs, null, null, null, null);
-
-        String productId = cursor.getString(cursor.getColumnIndex("id"));
-        String productPrice = cursor.getString(cursor.getColumnIndex("price"));
-        String productName = cursor.getString(cursor.getColumnIndex("name"));
-        String productManufacturer = cursor.getString(cursor.getColumnIndex("mfg"));
-        String productStyle = cursor.getString(cursor.getColumnIndex("style"));
-
-        ProductItem products = new ProductItem();
         cursor.close();
-        return products;
-};
+        return categories;
+
+    }
 
 }
 
