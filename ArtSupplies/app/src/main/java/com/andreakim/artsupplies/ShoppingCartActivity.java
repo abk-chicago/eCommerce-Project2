@@ -6,15 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class ShoppingCartActivity extends AppCompatActivity {
 
     Intent mMainIntent;
     ListView lv;
     Button btnMain;
+    ShoppingCart cart;
+    String mExtra;
 
 
 
@@ -24,13 +29,17 @@ public class ShoppingCartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
 
-// should I have mInstance (singleton) in here?
 
-        ShoppingCart cart = ShoppingCart.getInstance();
+        cart = ShoppingCart.getInstance();
 
         btnMain = (Button) findViewById(R.id.cart_btn_bk_main);
 
-        lv = (ListView)findViewById(R.id.listView_cart);
+        ArrayList<String> cart_items = getIntent().getStringArrayListExtra("cart");
+        ArrayAdapter<String> itemsAdapter =
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cart_items);
+
+        lv = (ListView) findViewById(R.id.listView_cart);
+        lv.setAdapter(itemsAdapter);
 
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,5 +53,6 @@ public class ShoppingCartActivity extends AppCompatActivity {
     @Override
     public View onCreateView(String name, Context context, AttributeSet attrs) {
         return super.onCreateView(name, context, attrs);
+
     }
 }

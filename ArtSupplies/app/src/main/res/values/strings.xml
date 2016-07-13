@@ -12,7 +12,7 @@
     <string name="btn_toMain">Home</string>
     <string name="btn_toCart">View Cart</string>
     <string name="stuff">Products go here</string>
-
+    <string name="nope">No items found. Please search by name of item only.</string>
     <!-- Item Listing strings -->
 <string name="add_cart">Add to Cart</string>
 

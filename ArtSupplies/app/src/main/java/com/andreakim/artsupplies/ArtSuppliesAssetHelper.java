@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper {
     public static final String PRODUCTS_TABLE_NAME = "Products";
     public static final String CUSTOMER_TABLE_NAME = "Customer";
     public static final String ORDER_DETAIL_TABLE_NAME = "Order";
+    int flag =0;
 
     private static final String TAG = SQLiteOpenHelper.class.getCanonicalName();
 
@@ -131,7 +133,11 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper {
 //                new String[]{"%" + query + "%"}, // d. selections args
 //                null, null, null, null);
       Cursor cursor =  db.rawQuery("select * from Products where "  + NAME + " like '%" + query + "%' ", null);
+        if (cursor == null) {
+            flag = 1;
+        }
         return cursor;
+
     }
 
 //    public Cursor searchAllArtCategories(String val) {

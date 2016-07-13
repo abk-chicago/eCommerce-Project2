@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,6 +27,7 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -55,7 +57,7 @@ public class ProductsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_products);
         ShoppingCart cart = ShoppingCart.getInstance();
 
-        cart.items.add("Test1 from ProductsActivity");
+        //cart.items.add("Test1 from ProductsActivity");
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_products);
@@ -67,11 +69,7 @@ public class ProductsActivity extends AppCompatActivity {
             }
         });
 
-        //  Toolbar toolbar = (Toolbar) findViewById(R.id.search);
-        // setSupportActionBar(toolbar);
-
-        //attach buttons
-
+        //attach button
         btnMain = (Button) findViewById(R.id.btn_toMain);
 
         mProductsView = (ListView) findViewById(R.id.listViewProducts);
@@ -128,7 +126,7 @@ public class ProductsActivity extends AppCompatActivity {
                 mDetailIntent.putExtra("MFG", mfg);
                 mDetailIntent.putExtra("PRICE", price);
                 startActivity(mDetailIntent);
-            }
+                }
         };
         //sends the user to detail page when clicked
         mProductsView.setOnItemClickListener(mClickListener);
@@ -163,15 +161,25 @@ public class ProductsActivity extends AppCompatActivity {
         mHelper = new ArtSuppliesAssetHelper(this);
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
-
             mCursor = mHelper.searchAllArtCategories(query);
-            mCursor.moveToFirst();
-            if (mCursor != null && mCursorAdapter != null) {
-                mCursorAdapter.changeCursor(mCursor);
-                mCursorAdapter.notifyDataSetChanged();
+
+
+            if(mHelper.flag == 1){
+
+                Log.i("Hey","garbage");
+            }
+
+
+                mCursor.moveToFirst();
+                if (mCursor != null && mCursorAdapter != null) {
+                    mCursorAdapter.changeCursor(mCursor);
+                    mCursorAdapter.notifyDataSetChanged();
+                }
             }
         }
-    }
+
+
+
 
     @Override
     public void onStart() {
