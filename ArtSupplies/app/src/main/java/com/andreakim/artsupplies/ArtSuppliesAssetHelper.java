@@ -130,9 +130,7 @@ public class ArtSuppliesAssetHelper extends SQLiteOpenHelper {
 //                NAME + " LIKE ?" + " OR " + STYLE + " LIKE ?" + " OR " + MFG + " LIKE ?", // c. selections
 //                new String[]{"%" + query + "%"}, // d. selections args
 //                null, null, null, null);
-        String[] selectionArgs = new String[] { query + "%" };
-
-      Cursor cursor =  db.rawQuery("select * from Products where "+ NAME+ " like '%" + query+"%'", null);
+      Cursor cursor =  db.rawQuery("select * from Products where "  + NAME + " like '%" + query + "%' ", null);
         return cursor;
     }
 
