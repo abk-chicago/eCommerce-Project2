@@ -1,9 +1,13 @@
 package com.andreakim.artsupplies;
 
+import android.os.Environment;
+
+import java.io.Serializable;
+
 /**
  * Created by andreakim on 6/27/16.
  */
-public class ProductItem {
+public class ProductItem implements Serializable{    // <- because i created custom objects
 
     private String mPaintbrush;
     private String mProduct;
@@ -68,8 +72,8 @@ public class ProductItem {
     }
 
 
-
-
-
-
+    @Override
+    public String toString() {
+        return mName + " * " + mStyle + " * " + mMfg + " * " + mPrice;
+    }
 }

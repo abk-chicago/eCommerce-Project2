@@ -32,8 +32,8 @@ public class IndivProdDetActivity extends AppCompatActivity {
     ShoppingCart cart;
     String extra;
     ListView lv;
-    ArrayList<String> mStringArray;
-
+    ArrayList<ProductItem> cartadded = new ArrayList<>();
+    ProductItem kart;
 
 
     private GoogleApiClient client;
@@ -84,23 +84,22 @@ public class IndivProdDetActivity extends AppCompatActivity {
         Intent listIntent = getIntent();
         String name = listIntent.getStringExtra("NAME");
         String prd = "Product Selected: ";
-        String prdProd = prd + name;
-        String style = listIntent.getStringExtra("STYLE");
+        final String prdProd = prd + name;
+        final String style = listIntent.getStringExtra("STYLE");
+
         String mfg = listIntent.getStringExtra("MFG");
-        String mMfg = "Manufacturer: ";
-        String mftMfg = mMfg + mfg;
+        final String mMfg = "Manufacturer: ";
+        final String mftMfg = mMfg + mfg;
         String price = listIntent.getStringExtra("PRICE");
         String prc = "Price: ";
-        String prcPrice = prc + price;
+        final String prcPrice = prc + price;
 
         mTxtName.setText(prdProd);
         mTxtStyle.setText(style);
         mTextMfg.setText(mftMfg);
         mTextPrice.setText(prcPrice);
 
-
         Button btnMain = (Button) findViewById(R.id.back_main);
-
         lv = (ListView) findViewById(R.id.listView_cart);
 
         final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_details);
@@ -109,13 +108,15 @@ public class IndivProdDetActivity extends AppCompatActivity {
             public void onClick(View v) {
                 mShoppingCartIntent = new Intent(IndivProdDetActivity.this, ShoppingCartActivity.class);
                 cart = ShoppingCart.getInstance();
-                mShoppingCartIntent.putStringArrayListExtra("cart", cart.items);
+
+                 ProductItem kart = new ProductItem(prdProd,style,mftMfg,prcPrice);
+                cartadded.add(kart);
+                mShoppingCartIntent.putExtra("cart",cartadded);
                 startActivity(mShoppingCartIntent);
             }
         });
 
-        Bundle stringArrayList = getIntent().getExtras();
-        mStringArray = stringArrayList.getStringArrayList("nope");
+
 
 
         btnMain.setOnClickListener(new View.OnClickListener() {
